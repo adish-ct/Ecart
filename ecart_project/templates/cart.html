@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+   Welcome to cart page your cart is here
+{% endblock %}
+
+{% block title %}
+    Cart page - ecart
+{% endblock %}
+
+
+{% block content %}
+
+{% if not cart_items %}
+    <div>
+        <div class="text-center my_title">
+            <br>
+            <h2> Your cart is empty! </h2>
+            <br>
+            <p>
+                Add items to your cart
+                <br>
+                <a class="text-center btn btn-info" href="{% url 'ecart_app:all_product_category' %}"> add to cart</a>
+            </p>
+        </div>
+    </div>
+{% else %}
+    <div>
+        <div class="text-center my_title">
+            <br>
+            <h3 class="text-center my_title"  style="color: black;">
+                <u><i>YOUR CART</i></u>
+            </h3>
+            <br>
+
+        </div>
+    </div>
+    <div class="row mx-auto">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <table class="table my_custom_table">
+                <thead class="text-center my_custom_thead">
+                <tr>
+                    <th colspan="5" class="my_custom_thead">
+                        your items
+                    </th>
+                </tr>
+                </thead>
+                <hr>
+                <tbody>
+                    {% for cart_item in cart_items %}
+                    <tr>
+                        <td>
+                            <a href="cart_item.product.get_absolute_url"><img src="{{ cart_item.product.img.url }}" alt="{{ cart_item.product.name }}" class="float-left rounded " width="150px" height="150px"></a>
+                        </td>
+                        <td class="text-left">
+                            {{ cart_item.product.name }}
+                        <br>
+                        SKU: {{ cart_item.product.id }}
+                        <br>
+                            price : Rs.{{ cart_item.product.price }}
+                        <br>
+                            Qty : {{ cart_item.quantity }} X
+                        </td>
+                        <td>
+                            <b> Rs. {{ cart_item.sub_total }}/-</b>
+                        </td>
+                        {% if cart_item.quantity < cart_item.product.stock %}
+                        <td>
+                            <a href="{% url 'cart_app:add_cart' cart_item.product.id %}" class="custom_a"><i class="fa fa-plus-square"></i></a>
+                            <br>
+                            <a href="{% url 'cart_app:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fa fa-minus-square"></i></a>
+                            <br>
+                            <br>
+                            <a href="{% url 'cart_app:cart_delete' cart_item.product.id %}"><i class="fa fa-trash"></i></a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <a href="{% url 'cart_app:cart_remove' cart_item.product.id %}" class="custom_icon"><i class="fa fa-minus-circle"></i></a>
+                            &nbsp;
+                            <a href="{% url 'cart_app:cart_delete' cart_item.product.id %}"><i class="fa fa-trash"></i></a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <table class="table my_custom_table">
+                <thead class="my_custom_thead">
+                <tr>
+                    <th colspan="5">
+                        Checkout your products
+                    </th>
+                </tr>
+                </thead>
+                <hr>
+                <tbody>
+                <tr>
+                    <td>
+                        Please review your cart items and confirm your order before proceed to pay
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-6 text-left mx-5">
+                    <strong> Your Cart Total : Rs. {{ total }}/-</strong>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-4 mx-auto">
+                <a href="{% url 'ecart_app:all_product_category' %}" class="btn btn-warning btn-block custom_button">add more items</a>
+            </div>
+            <div class="col-4 mx-auto">
+                <a href="" class="btn btn-success btn-block custom_button">Make payment</a>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+

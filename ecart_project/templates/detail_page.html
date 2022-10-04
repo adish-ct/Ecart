@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {{ product.desc | truncatewords:150 }}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ product.name }}/e-cart
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row my_prod_row">
+        <div class="mx_auto">
+            <p><a href="{% url 'ecart_app:all_product_category' %}">Home</a> | <a href="{{ product.category.get_url }}">{{ product.category }}</a> | {{ product.name }} </p>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <div style="min-width: 18rem">
+                    <img class="my_prod_image" src="{{ product.img.url }}" alt="{{ product.name }}" height="400px">
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+
+                <h2 class="my_prod_title"> {{ product.name }} </h2>
+                <p><b> Rs. {{ product.price }} /- only</b></p>
+                <p><h4><u>Product Description</u></h4></p>
+                <p class="text-justify"> {{ product.desc }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis cum eius eligendi iure maxime minima obcaecati praesentium quaerat qui ratione rem temporibus, velit! Architecto esse nesciunt nobis nostrum odio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur eos id recusandae veniam voluptates voluptatum! Ipsa maxime quos soluta? Asperiores culpa dignissimos iste laudantium nemo quia rerum sapiente vero.</p>
+
+                <div>
+                    {% if product.stock <= 0 %}
+                        <p style="my_prod_text"><b>out of stock</b></p>
+                    {% else %}
+                        <a class="btn btn-warning" href="{% url 'cart_app:add_cart' product.id %}">Add to cart <i class="fa fa-cart-plus"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

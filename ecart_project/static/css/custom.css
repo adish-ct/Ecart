@@ -1,0 +1,145 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-item{
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.dropdown-item{
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.my_title{
+    color: red;
+}
+
+.my-footer p{
+    padding-top: 20px;
+    font-size: 14px;
+    padding-bottom: 20px;
+    color: black;
+}
+
+.my-footer{
+    background-color: #e2e2e8;
+    height: 60px;
+}
+
+/*** category page ***/
+
+.my_row_class{
+    padding-top: 15px;
+}
+
+.my_row_class .mx_auto{
+    color: black;
+    font-size: 12px;
+}
+
+.my_image{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.my_heading{
+    font-size: 18;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: #060615;
+}
+
+.my_image_padding{
+    padding: 5px;
+}
+
+
+.product_heading{
+    font-size: 12;
+    text-transform: uppercase;
+    letter-spacing: .01em;
+    color: #060615;
+}
+
+.my_bottom_margin{
+    margin: 10px;
+}
+
+.card-body h4{
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+/*** product page ***/
+
+.my_prod_row{
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.my_prod_row mx_auto{
+    color: black;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.my_prod_title{
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.my_prod_text{
+    padding-right: 20px;
+    color: red;
+}
+
+.my_prod_image{
+    padding-bottom: 30px;
+}
+
+.my_search_text{
+    top-padding: 20px;
+}
+
+/*** cart page ***/
+/***
+.custom_image{
+    width: 30px;
+    height: 30px;
+}
+***/
+.my_custom_table{
+    min-width: 400px;
+    font-size: 14px;
+}
+
+.my_custom_thead{
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background-color: silver;
+    color: black;
+}
+
+.custom_a{
+    text-decoration: none;
+}
+
+.custom_icon{
+    text-decoration: none;
+    color: red!important;
+}
+
+.custom_button{
+    margin: 5px;
+}
